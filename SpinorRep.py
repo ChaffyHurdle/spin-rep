@@ -2,21 +2,17 @@
 """
 Created on Sun Nov 12 17:39:33 2023
 
-@author: Harry Wells
-"""
+This file contains a class SpinorRep that contains the structure of a Spinor. 
+This class has contained methods to compute and validate certain representations against user 
+provided constraints.
 
-
-"""
-10 x 8
-each row must have 4, 2 or 0 1s such that there are K 1s in each column
-check that each row doesn't share more than or equal to 6 1s or 0s
-first row with ones
+@author: Niren Bhoja & Harry Wells 
 """
 
 import numpy as np
 from itertools import combinations
 
-class NirenProblem:
+class SpinorRep:
     
     def __init__(self,num_rows,num_cols,col_sum_limit,row_sum_list,row_match_limit):
         
@@ -97,11 +93,16 @@ class NirenProblem:
         ones_row = np.ones((1,self.M), dtype = int)
         self.table = np.vstack((ones_row, self.temp_table))
         print(self.table)
-        
-problem = NirenProblem(num_rows = 6, 
-                       num_cols = 8,
-                       col_sum_limit = [4,4,2,2,2,4,3,3], 
-                       row_sum_list = [4,2,0], 
-                       row_match_limit = 6)
+
+
+"""
+Example of a Spinor representation
+"""
+
+problem = SpinorRep(num_rows = 6, 
+                    num_cols = 8,
+                    col_sum_limit = [4,4,2,2,2,4,3,3], 
+                    row_sum_list = [4,2,0], 
+                    row_match_limit = 6)
 problem.compute_solution()
         
